@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link ,Outlet,} from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+import axios from 'axios';
 const Dashboard = () => {
    return (
     <div className="container-fluid">
@@ -10,10 +10,10 @@ const Dashboard = () => {
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <Link
               to="/dashboard"
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
+              className="d-flex align-items-center justify-content-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none w-100"
             >
-              <span className="fs-5 fw-bolder d-none d-sm-inline">
-                EmpMenager
+              <span className="d-flex justify-content-center w-100 py-3">
+                <img src="images/logo.png" alt="Logo" height="100" width="100" margin-left="100px"/>
               </span>
             </Link>
             <ul
@@ -68,6 +68,12 @@ const Dashboard = () => {
               </li>
             </ul>
           </div>
+        </div>
+         <div className="col p-0 m-0">
+            <div className="p-2 d-flex justify-content-center shadow">
+                <h4>Emoployee Management System</h4>
+            </div>
+            <Outlet />
         </div>
       </div>
     </div>
