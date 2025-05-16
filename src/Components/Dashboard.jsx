@@ -13,7 +13,7 @@ const Dashboard = () => {
               className="d-flex align-items-center justify-content-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none w-100"
             >
               <span className="d-flex justify-content-center w-100 py-3">
-                <img src="images/logo.png" alt="Logo" height="100" width="100" margin-left="100px"/>
+                 EmpMenagment
               </span>
             </Link>
             <ul
