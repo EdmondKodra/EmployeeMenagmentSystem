@@ -8,18 +8,26 @@ const Home = () => {
 
     useEffect(()=> {
         adminCount();
+        employeeCount();
 
    },[])
 
    const adminCount =() => {
-    axios.get('http://localhost:3000/auth/admin_count')
-    .then(result => {
-        if(result.data.Status){
-            setAdminTotal(result.data.Result[0].admin)
-        }
-    })
-    
+        axios.get('http://localhost:3000/auth/admin_count')
+        .then(result => {
+            if(result.data.Status){
+                setAdminTotal(result.data.Result[0].admin)
+            }
+        })
    }
+   const employeeCount =() => {
+        axios.get('http://localhost:3000/auth/employee_count')
+        .then(result => {
+            if(result.data.Status){
+                setemployeeTotal(result.data.Result[0].employee)
+            }
+        })
+    }
   return (
     <div>
       <div className='p-3 d-flex justify-content-around mt-3'>
@@ -28,8 +36,8 @@ const Home = () => {
             <h4>Admin</h4>
           </div>
           <hr />
-          <div className='d-flex justify-content-between'>
-            <h5>Total:{adminTotal}</h5>
+          <div className='d-flex justify-content-around'>
+            <h5>Total:  {adminTotal}</h5>
             <h5></h5>
           </div>
         </div>
@@ -38,8 +46,8 @@ const Home = () => {
             <h4>Employee</h4>
           </div>
           <hr />
-          <div className='d-flex justify-content-between'>
-            <h5>Total:</h5>
+          <div className='d-flex justify-content-around'>
+            <h5>Total:   {employeeTotal}</h5>
             <h5></h5>
           </div>
         </div>
