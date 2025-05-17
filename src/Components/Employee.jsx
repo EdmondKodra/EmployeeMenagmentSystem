@@ -49,6 +49,7 @@ const Employee = () => {
                         <th>Email</th>
                         <th>Addres</th>
                         <th>Salary</th>
+                        <th>Action</th>
                         
                     </tr>
                 </thead>
