@@ -5,12 +5,23 @@ const Home = () => {
     const [adminTotal ,setAdminTotal ] = useState()
     const [employeeTotal,setemployeeTotal ] = useState()
     const [salaryTotal ,setSalaryTotal ] = useState()
+    const [admins, setAdmins] = useState([])
 
     useEffect(()=> {
         adminCount();
         employeeCount();
+        salaryCount();
+        AdminRecords();
 
    },[])
+   const AdminRecords = () => {
+    axios.get('http://localhost:3000/auth/admin_records')
+        .then(result => {
+            if(result.data.Status){
+                setAdmins(result.data.Result)
+            }
+        })
+   }
 
    const adminCount =() => {
         axios.get('http://localhost:3000/auth/admin_count')
@@ -28,6 +39,18 @@ const Home = () => {
             }
         })
     }
+    
+    const salaryCount =() => {
+        axios.get('http://localhost:3000/auth/salary_count')
+        .then(result => {
+            if(result.data.Status){
+                setSalaryTotal(result.data.Result[0].salary)
+            }
+            else{
+                alert(result.data.Error)
+            }
+        })
+    }
   return (
     <div>
       <div className='p-3 d-flex justify-content-around mt-3'>
@@ -37,7 +60,7 @@ const Home = () => {
           </div>
           <hr />
           <div className='d-flex justify-content-around'>
-            <h5>Total:  {adminTotal}</h5>
+            <h5>Total:     {adminTotal}</h5>
             <h5></h5>
           </div>
         </div>
@@ -47,7 +70,7 @@ const Home = () => {
           </div>
           <hr />
           <div className='d-flex justify-content-around'>
-            <h5>Total:   {employeeTotal}</h5>
+            <h5>Total:     {employeeTotal}</h5>
             <h5></h5>
           </div>
         </div>
@@ -57,7 +80,7 @@ const Home = () => {
           </div>
           <hr />
           <div className='d-flex justify-content-between'>
-            <h5>Total:</h5>
+            <h5>Total: ${salaryTotal}</h5>
             <h5></h5>
           </div>
         </div>
@@ -72,19 +95,24 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
+                {
+              admins.map(a => (
                 <tr>
-                  <td></td>
+                  <td>{a.email}</td>
                   <td>
                   <button
-                    className="btn btn-secondary btn-sm me-2">
+                    className="btn btn-info btn-sm me-2">
                     Edit
                   </button>
                   <button
-                    className="btn btn-danger btn-sm" >
+                    className="btn btn-warning btn-sm" >
                     Delete
                   </button>
                   </td>
                 </tr>
+              ))
+            }
+
           </tbody>
         </table>
       </div>
