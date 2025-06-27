@@ -28,9 +28,10 @@ The system supports **admin** and **user** roles, allowing employee registration
 
 ---
 
-## ✅ Testing with Cypress
+## ✅ Testing with Cypress & Postman
 
 A dedicated Cypress test suite is created to cover **both positive and negative scenarios** for the Add Employee form.
+Using Postman to perform CRUD operations, automate API tests, and verify responses.
 
 This is a short demonstration of the automated tests in action.
 https://drive.google.com/file/d/15eZETzHZ28KA6uZZ3AkqwaBV33AVn7NM/view?usp=drive_link
